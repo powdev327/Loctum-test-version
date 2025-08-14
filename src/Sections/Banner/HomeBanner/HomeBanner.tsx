@@ -66,17 +66,17 @@ const HomeBanner = () => {
 
     return (
         <HomeBannerStyle className="hero-section">
-            <div className="bg-shape">
-                <div className="shape-img img-1">
-                    <ScrollAnimate delay={250}><img src={bannerShape1} alt="shape1" /></ScrollAnimate>
-                </div>
-                <div className="shape-img img-2">
-                    <ScrollAnimate delay={220}><img src={bannerShape2} alt="shape2" /></ScrollAnimate>
-                </div>
-                <div className="shape-img img-3">
-                    <ScrollAnimate delay={240}><img src={bannerShape3} alt="shape3" /></ScrollAnimate>
-                </div>
-            </div>
+            {/*<div className="bg-shape">*/}
+            {/*    <div className="shape-img img-1">*/}
+            {/*        <ScrollAnimate delay={250}><img src={bannerShape1} alt="shape1" /></ScrollAnimate>*/}
+            {/*    </div>*/}
+            {/*    <div className="shape-img img-2">*/}
+            {/*        <ScrollAnimate delay={220}><img src={bannerShape2} alt="shape2" /></ScrollAnimate>*/}
+            {/*    </div>*/}
+            {/*    <div className="shape-img img-3">*/}
+            {/*        <ScrollAnimate delay={240}><img src={bannerShape3} alt="shape3" /></ScrollAnimate>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <div className="container">
                 <div className="hero-layout">
@@ -108,11 +108,6 @@ const HomeBanner = () => {
                             </div>
                         </div>
                     )}
-
-                    {/* Overlay Card */}
-                    <div className="overlay-card">
-                        <div className="overlay-pattern"></div>
-                    </div>
 
                     {/* Main Text Card */}
                     <div className="text-card">
@@ -212,16 +207,16 @@ const HomeBanner = () => {
                     )}
 
                     {/* Demo Button (Floating) */}
-                    <div className="floating-demo">
-                        <ScrollAnimate delay={400}>
-                            <a href="#demo" className="get-demo-btn">
-                                <img src={getDemoSvg} alt="get-demo" />
-                                <span className="icon">
-                                    <img src={arrowRightSvg} alt="icon" />
-                                </span>
-                            </a>
-                        </ScrollAnimate>
-                    </div>
+                    {/*<div className="floating-demo">*/}
+                    {/*    <ScrollAnimate delay={400}>*/}
+                    {/*        <a href="#demo" className="get-demo-btn">*/}
+                    {/*            <img src={getDemoSvg} alt="get-demo" />*/}
+                    {/*            <span className="icon">*/}
+                    {/*                <img src={arrowRightSvg} alt="icon" />*/}
+                    {/*            </span>*/}
+                    {/*        </a>*/}
+                    {/*    </ScrollAnimate>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </HomeBannerStyle>

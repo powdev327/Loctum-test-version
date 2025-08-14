@@ -24,14 +24,6 @@ const BlogDetails = () => {
     <BlogDetailsStyleWrapper>
       {/* breadcrumb section */}
       <section className="breadcrumb-section blog-details-breadcrumb-section">
-        <div className="bg-shape">
-          <div className="shape-img img-1">
-            <ScrollAnimate><img src={ShapeIcon1} alt="shape" /></ScrollAnimate>
-          </div>
-          <div className="shape-img img-2">
-            <ScrollAnimate><img src={ShapeIcon2} alt="shape" /></ScrollAnimate>
-          </div>
-        </div>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-12">

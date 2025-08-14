@@ -175,24 +175,77 @@ const HomeBannerStyle = styled.section`
     }
   }
 
-  /* Overlay Card */
+  /* Header Background Overlay Card */
   .overlay-card {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 25%; /* One-fourth overlay */
+    height: clamp(120px, 20vh, 200px); /* Responsive header height */
     background: linear-gradient(135deg, rgba(28, 78, 167, 0.15) 0%, rgba(41, 202, 173, 0.1) 100%);
-    backdrop-filter: blur(10px);
-    border-radius: 30px 30px 0 0;
+    backdrop-filter: blur(15px);
+    border-radius: min(30px, 3vw) min(30px, 3vw) 0 0;
     z-index: 5;
+    box-shadow: 0 8px 32px rgba(28, 78, 167, 0.1);
+    transition: all 0.3s ease;
+    animation: slideDownFade 0.8s ease-out;
+    
+    &:hover {
+      backdrop-filter: blur(20px);
+      box-shadow: 0 12px 40px rgba(28, 78, 167, 0.15);
+      
+      .overlay-pattern {
+        &::before {
+          opacity: 0.8;
+          transform: scale(1.1);
+        }
+        
+        &::after {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+    }
 
     .overlay-pattern {
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 50%, rgba(41, 202, 173, 0.1) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 20%, rgba(28, 78, 167, 0.1) 0%, transparent 50%);
-      border-radius: 30px 30px 0 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(41, 202, 173, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(28, 78, 167, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(117, 226, 224, 0.08) 0%, transparent 40%);
+      border-radius: min(30px, 3vw) min(30px, 3vw) 0 0;
+      position: relative;
+      
+      /* Header decorative elements */
+      &::before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        width: min(60px, 8vw);
+        height: min(60px, 8vw);
+        background: linear-gradient(135deg, rgba(41, 202, 173, 0.2) 0%, transparent 70%);
+        border-radius: 50%;
+        opacity: 0.6;
+        animation: pulse 3s ease-in-out infinite;
+        transition: all 0.3s ease;
+      }
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 15px;
+        left: 40px;
+        width: min(40px, 5vw);
+        height: min(40px, 5vw);
+        background: linear-gradient(135deg, rgba(28, 78, 167, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: pulse 4s ease-in-out infinite;
+        animation-delay: 1.5s;
+        transition: all 0.3s ease;
+      }
     }
   }
 
@@ -376,7 +429,7 @@ const HomeBannerStyle = styled.section`
   }
 
   /* Floating Demo Button */
-  .floating-demo {
+  /*.floating-demo {
     position: absolute;
     bottom: 40px;
     right: 40px;
@@ -437,8 +490,48 @@ const HomeBannerStyle = styled.section`
     }
   }
 
+  @keyframes slideDownFade {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 0.9;
+    }
+  }
+
   /* Responsive Design */
   @media screen and (max-width: 1399px) {
+    .overlay-card {
+      height: clamp(110px, 18vh, 180px);
+      
+      .overlay-pattern {
+        &::before {
+          top: 15px;
+          right: 25px;
+          width: min(50px, 7vw);
+          height: min(50px, 7vw);
+        }
+        
+        &::after {
+          bottom: 12px;
+          left: 35px;
+          width: min(35px, 4vw);
+          height: min(35px, 4vw);
+        }
+      }
+    }
+    
     .floating-images {
       max-width: 1200px;
       
@@ -463,6 +556,29 @@ const HomeBannerStyle = styled.section`
   }
 
   @media screen and (max-width: 1199px) {
+    .overlay-card {
+      height: clamp(100px, 16vh, 160px);
+      border-radius: min(25px, 2.5vw) min(25px, 2.5vw) 0 0;
+      
+      .overlay-pattern {
+        border-radius: min(25px, 2.5vw) min(25px, 2.5vw) 0 0;
+        
+        &::before {
+          top: 12px;
+          right: 20px;
+          width: min(45px, 6vw);
+          height: min(45px, 6vw);
+        }
+        
+        &::after {
+          bottom: 10px;
+          left: 30px;
+          width: min(30px, 3.5vw);
+          height: min(30px, 3.5vw);
+        }
+      }
+    }
+    
     .text-card {
       .hero-content-text {
         .uig-banner-title {
@@ -503,6 +619,29 @@ const HomeBannerStyle = styled.section`
   @media screen and (max-width: 991px) {
     padding: 100px 0px 60px;
     min-height: auto;
+    
+    .overlay-card {
+      height: clamp(80px, 14vh, 140px);
+      border-radius: min(20px, 2vw) min(20px, 2vw) 0 0;
+      
+      .overlay-pattern {
+        border-radius: min(20px, 2vw) min(20px, 2vw) 0 0;
+        
+        &::before {
+          top: 10px;
+          right: 15px;
+          width: min(35px, 5vw);
+          height: min(35px, 5vw);
+        }
+        
+        &::after {
+          bottom: 8px;
+          left: 20px;
+          width: min(25px, 3vw);
+          height: min(25px, 3vw);
+        }
+      }
+    }
     
     .text-card {
       padding: 60px 40px 50px;
@@ -591,6 +730,29 @@ const HomeBannerStyle = styled.section`
     padding: 80px 0px 40px;
     border-radius: 0px 0px 30px 30px;
     
+    .overlay-card {
+      height: clamp(70px, 12vh, 120px);
+      border-radius: min(15px, 2vw) min(15px, 2vw) 0 0;
+      
+      .overlay-pattern {
+        border-radius: min(15px, 2vw) min(15px, 2vw) 0 0;
+        
+        &::before {
+          top: 8px;
+          right: 12px;
+          width: min(25px, 4vw);
+          height: min(25px, 4vw);
+        }
+        
+        &::after {
+          bottom: 6px;
+          left: 15px;
+          width: min(20px, 2.5vw);
+          height: min(20px, 2.5vw);
+        }
+      }
+    }
+    
     .text-card {
       padding: 40px 20px 40px;
       border-radius: 20px;
@@ -656,6 +818,29 @@ const HomeBannerStyle = styled.section`
   }
 
   @media screen and (max-width: 480px) {
+    .overlay-card {
+      height: clamp(60px, 10vh, 100px);
+      border-radius: 12px 12px 0 0;
+      
+      .overlay-pattern {
+        border-radius: 12px 12px 0 0;
+        
+        &::before {
+          top: 6px;
+          right: 10px;
+          width: 20px;
+          height: 20px;
+        }
+        
+        &::after {
+          bottom: 4px;
+          left: 12px;
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+    
     .text-card {
       .hero-content-text {
         .uig-banner-title {
