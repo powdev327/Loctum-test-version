@@ -463,8 +463,12 @@
       "title2": "Staffing Solution",
       "description": "QuickLocum simplifies healthcare staffing by connecting locum professionals with clinics and hospitals in need—quickly and efficiently.",
       "cta": "Get Started for Free",
+      "learnMore": "Learn More",
       "feature1": "No credit card required",
-      "feature2": "Instant job matching"
+      "feature2": "Instant job matching",
+      "feature3": "24/7 support & compliance",
+      "healthcareProfessional": "Healthcare Professional",
+      "healthcareFacility": "Healthcare Facility"
     },
     "features": {
       "subtitle": "Features",

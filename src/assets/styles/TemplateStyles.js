@@ -51,6 +51,12 @@ const TemplateStyles = {
     chatbotGreen: "#061C23",
     chatbotGray: "#F7F5F2",
     templateDark: "#0D1014",
+    // Healthcare Theme Colors
+    healthcarePrimary: "#1C4EA7", // Prussian Blue
+    healthcareSecondary: "#29CAAD", // Light Sea Green
+    healthcareAccent: "#75E2E0", // Sky Blue
+    healthcareDark: "#024D60", // Midnight Green
+    healthcareLight: "#D9F8F0", // Water
   },
 };
 

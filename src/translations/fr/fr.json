@@ -463,8 +463,12 @@
       "title2": "en recrutement médical",
       "description": "QuickLocum simplifie le recrutement médical en connectant rapidement et efficacement les professionnels de santé remplaçants avec les cliniques et hôpitaux.",
       "cta": "Commencer Gratuitement",
+      "learnMore": "En Savoir Plus",
       "feature1": "Aucune carte bancaire requise",
-      "feature2": "Correspondance instantanée d'emploi"
+      "feature2": "Correspondance instantanée d'emploi",
+      "feature3": "Support 24/7 et conformité",
+      "healthcareProfessional": "Professionnel de Santé",
+      "healthcareFacility": "Établissement de Santé"
     },
     "features": {
       "subtitle": "Fonctionnalités",

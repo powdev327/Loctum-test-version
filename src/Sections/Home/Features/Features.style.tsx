@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const FeaturesStyleWrapper = styled.section`
   padding: 100px 0 50px 0;
+  background: linear-gradient(180deg, ${({ theme }) => theme.colors.bgHero} 0%, ${({ theme }) => theme.colors.whiteColor} 100%);
 
   .features-container {
     display: grid;
@@ -16,19 +17,29 @@ const FeaturesStyleWrapper = styled.section`
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    background: #ffffff;
-    border-radius: 15px;
+    background: ${({ theme }) => theme.colors.whiteColor};
+    border-radius: 20px;
     padding: 40px;
     min-height: 100%;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 15px 40px rgba(28, 78, 167, 0.08);
     position: relative;
     transition: all 0.4s ease-in-out;
     overflow: hidden;
     cursor: pointer;
+    border: 1px solid rgba(28, 78, 167, 0.08);
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0px 25px 60px rgba(28, 78, 167, 0.15);
+      border-color: ${({ theme }) => theme.colors.healthcareSecondary};
+      
+      .feature-card-icon img {
+        transform: scale(1.1);
+      }
+      
+      h5 {
+        color: ${({ theme }) => theme.colors.primary};
+      }
     }
 
     .feature-card-shape {
@@ -70,23 +81,25 @@ const FeaturesStyleWrapper = styled.section`
     }
 
     h5 {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
-      color: #2c3e50;
+      color: ${({ theme }) => theme.colors.title};
       margin-bottom: 15px;
       min-height: 50px; /* Ensures all titles are aligned */
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: color 0.3s ease;
     }
 
     p {
       font-size: 16px;
-      line-height: 26px;
-      color: #6c757d;
+      line-height: 28px;
+      color: ${({ theme }) => theme.colors.textColor};
       max-width: 90%;
       margin: auto;
       flex-grow: 1;
+      font-weight: 500;
     }
   }
 
