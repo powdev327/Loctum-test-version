@@ -128,6 +128,8 @@ const HeaderStyleWrapper = styled.header`
   left: 0;
   width: 100%;
   padding: 15px 0;
+  background: #29CAAD ;
+
   .language-switcher {
     position: relative;
   }

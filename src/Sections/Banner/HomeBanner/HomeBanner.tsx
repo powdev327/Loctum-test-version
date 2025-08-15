@@ -65,7 +65,25 @@ const HomeBanner = () => {
     const showFloatingImages = windowWidth > 991; // Only show floating images on desktop
 
     return (
-        <HomeBannerStyle className="hero-section">
+        <HomeBannerStyle 
+            className="hero-section"
+            style={{
+                transform: `translateY(${Math.min(scrollY / 15, 30)}px)`,
+                boxShadow: `
+                    0 20px 60px rgba(106, 173, 216, ${0.15 + Math.min(scrollY / 2000, 0.1)}),
+                    0 0 40px rgba(106, 173, 216, ${0.1 + Math.min(scrollY / 3000, 0.1)}),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1)
+                `
+            }}
+        >
+            {/* Secondary Neon Orb */}
+            <div 
+                className="neon-orb-secondary"
+                style={{
+                    transform: `translate(${Math.sin(scrollY / 100) * 20}px, ${Math.cos(scrollY / 150) * 15}px)`
+                }}
+            ></div>
+
             {/*<div className="bg-shape">*/}
             {/*    <div className="shape-img img-1">*/}
             {/*        <ScrollAnimate delay={250}><img src={bannerShape1} alt="shape1" /></ScrollAnimate>*/}

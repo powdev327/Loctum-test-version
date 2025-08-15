@@ -1,23 +1,93 @@
 import styled from "styled-components";
 
 import BgImg from "../../../assets/images/bg/wave-line.png";
-import CurveLineImg from "../../../assets/images/shape/curve-line.png";
-import HoggleImg from "../../../assets/images/icons/hoogle-icon.svg";
 
 const HomeBannerStyle = styled.section`
   min-height: 100vh;
   padding: 120px 0px 80px 0px;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.bgHero} 0%, rgba(117, 226, 224, 0.1) 100%);
+  background: 
+    linear-gradient(135deg, 
+      rgba(106, 173, 216, 0.25) 0%, 
+      rgba(106, 173, 216, 0.15) 50%, 
+      rgba(106, 173, 216, 0.3) 100%
+    ),
+    linear-gradient(135deg, ${({ theme }) => theme.colors.bgHero} 0%, rgba(117, 226, 224, 0.1) 100%);
   background-image: url(${BgImg});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(106, 173, 216, 0.3);
   position: relative;
   z-index: 1;
   overflow: hidden;
   border-radius: 0px 0px 50px 50px;
   display: flex;
   align-items: center;
+  box-shadow: 
+    0 20px 60px rgba(106, 173, 216, 0.15),
+    0 0 40px rgba(106, 173, 216, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  /* Neon glow effect overlay */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      rgba(106, 173, 216, 0.1) 0%, 
+      transparent 50%, 
+      rgba(106, 173, 216, 0.1) 100%
+    );
+    border-radius: inherit;
+    opacity: 0.6;
+    animation: neonPulse 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Floating Neon Orbs */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, 
+      rgba(106, 173, 216, 0.3) 0%, 
+      rgba(106, 173, 216, 0.1) 50%, 
+      transparent 70%
+    );
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(106, 173, 216, 0.4);
+    animation: neonOrb 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Additional floating orb */
+  .neon-orb-secondary {
+    position: absolute;
+    bottom: 20%;
+    left: 8%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, 
+      rgba(106, 173, 216, 0.4) 0%, 
+      rgba(106, 173, 216, 0.15) 50%, 
+      transparent 70%
+    );
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(106, 173, 216, 0.35);
+    animation: neonOrb 8s ease-in-out infinite;
+    animation-delay: 2s;
+    pointer-events: none;
+    z-index: 0;
+  }
 
   .banner-language-switcher {
     position: absolute;
@@ -512,6 +582,18 @@ const HomeBannerStyle = styled.section`
 
   /* Responsive Design */
   @media screen and (max-width: 1399px) {
+    /* Adjust neon orbs for smaller screens */
+    &::after {
+      width: 100px;
+      height: 100px;
+      box-shadow: 0 0 30px rgba(106, 173, 216, 0.35);
+    }
+    
+    .neon-orb-secondary {
+      width: 70px;
+      height: 70px;
+      box-shadow: 0 0 25px rgba(106, 173, 216, 0.3);
+    }
     .overlay-card {
       height: clamp(110px, 18vh, 180px);
       
@@ -556,6 +638,19 @@ const HomeBannerStyle = styled.section`
   }
 
   @media screen and (max-width: 1199px) {
+    /* Adjust neon orbs for laptop screens */
+    &::after {
+      width: 80px;
+      height: 80px;
+      box-shadow: 0 0 25px rgba(106, 173, 216, 0.3);
+    }
+    
+    .neon-orb-secondary {
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 0 20px rgba(106, 173, 216, 0.25);
+    }
+    
     .overlay-card {
       height: clamp(100px, 16vh, 160px);
       border-radius: min(25px, 2.5vw) min(25px, 2.5vw) 0 0;
@@ -619,6 +714,23 @@ const HomeBannerStyle = styled.section`
   @media screen and (max-width: 991px) {
     padding: 100px 0px 60px;
     min-height: auto;
+    
+    /* Smaller neon orbs for tablet */
+    &::after {
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 0 20px rgba(106, 173, 216, 0.25);
+      top: 15%;
+      right: 8%;
+    }
+    
+    .neon-orb-secondary {
+      width: 45px;
+      height: 45px;
+      box-shadow: 0 0 15px rgba(106, 173, 216, 0.2);
+      bottom: 15%;
+      left: 5%;
+    }
     
     .overlay-card {
       height: clamp(80px, 14vh, 140px);
@@ -730,6 +842,23 @@ const HomeBannerStyle = styled.section`
     padding: 80px 0px 40px;
     border-radius: 0px 0px 30px 30px;
     
+    /* Minimal neon orbs for mobile */
+    &::after {
+      width: 40px;
+      height: 40px;
+      box-shadow: 0 0 15px rgba(106, 173, 216, 0.2);
+      top: 12%;
+      right: 6%;
+    }
+    
+    .neon-orb-secondary {
+      width: 30px;
+      height: 30px;
+      box-shadow: 0 0 10px rgba(106, 173, 216, 0.15);
+      bottom: 12%;
+      left: 4%;
+    }
+    
     .overlay-card {
       height: clamp(70px, 12vh, 120px);
       border-radius: min(15px, 2vw) min(15px, 2vw) 0 0;
@@ -818,6 +947,23 @@ const HomeBannerStyle = styled.section`
   }
 
   @media screen and (max-width: 480px) {
+    /* Tiny neon orbs for small mobile */
+    &::after {
+      width: 25px;
+      height: 25px;
+      box-shadow: 0 0 10px rgba(106, 173, 216, 0.15);
+      top: 10%;
+      right: 5%;
+    }
+    
+    .neon-orb-secondary {
+      width: 20px;
+      height: 20px;
+      box-shadow: 0 0 8px rgba(106, 173, 216, 0.12);
+      bottom: 10%;
+      left: 3%;
+    }
+    
     .overlay-card {
       height: clamp(60px, 10vh, 100px);
       border-radius: 12px 12px 0 0;
