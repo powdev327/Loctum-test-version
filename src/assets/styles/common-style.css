@@ -14,7 +14,7 @@ body {
 }
 .hero-badge::before {
   position: absolute;
-  content: url("../images/icons/badge-icon.svg");
+  content: url("../images/icons/badge-icon-green.svg");
   top: -52px;
   right: -32px;
   animation: badgeAnimate 1.5s infinite ease-in-out;
