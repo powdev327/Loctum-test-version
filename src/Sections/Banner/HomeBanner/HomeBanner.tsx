@@ -53,7 +53,7 @@ const HomeBanner = () => {
 
     // Calculate responsive image movement based on scroll and screen size
     const getResponsiveMovement = () => {
-        const maxMovement = windowWidth > 1200 ? 100 : 
+        const maxMovement = windowWidth > 1200 ? 150 :
                           windowWidth > 991 ? 80 : 
                           windowWidth > 767 ? 60 : 40;
         const scrollMultiplier = windowWidth > 1200 ? 5 : 
@@ -103,7 +103,7 @@ const HomeBanner = () => {
                         <div className="floating-images">
                             <div 
                                 className="doctor-image scroll-animate"
-                                style={{ transform: `translateX(-${imageMovement}px)` }}
+                                style={{ transform: `translate(-${imageMovement}px, ${Math.min(scrollY / 3, 1000)}px)` }}
                             >
                                 <ScrollAnimate delay={100}>
                                     <img src={doctorImg} alt="Healthcare Professional" />

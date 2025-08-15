@@ -32,6 +32,11 @@ const MobileMenuStyleWrapper = styled.div`
       overflow: hidden;
     }
 
+    li.language-switcher-mobile {
+      overflow: visible;
+      position: relative;
+    }
+
     li a,
     li button {
       border-bottom: 1px solid ${({ theme }) => theme.colors.blackColor}26;

@@ -17,9 +17,9 @@ const LanguageSwitcher = () => {
     setDropdownOpen(false);
   };
 
-  // Close dropdown if clicking outside
+  // Close dropdown if clicking outside (support mouse and touch)
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handlePointerOutside = (event) => {
       if (
         dropdownOpen &&
         dropdownRef.current &&
@@ -30,8 +30,12 @@ const LanguageSwitcher = () => {
         setDropdownOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handlePointerOutside);
+    document.addEventListener("touchstart", handlePointerOutside);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerOutside);
+      document.removeEventListener("touchstart", handlePointerOutside);
+    };
   }, [dropdownOpen]);
 
   // Close dropdown on Escape key press
@@ -46,15 +50,16 @@ const LanguageSwitcher = () => {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [dropdownOpen]);
 
-  const currentLang = i18n.language || "en";
+  const rawLang = i18n.language || "en";
+  const currentLang = (rawLang.split?.("-")[0] || rawLang || "en").toLowerCase();
 
   return (
     <div className="language-switcher relative">
-      <div className="hidden md:flex items-center space-x-4">
+      <div className="flex items-center space-x-4">
         <div className="relative">
           <button
             ref={buttonRef}
-            onClick={() => setDropdownOpen(!dropdownOpen)}
+            onClick={() => handleLanguageChange(currentLang === 'en' ? 'fr' : 'en')}
             className="language-toggle flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white bg-white dark:bg-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 ease-in-out text-sm"
             style={{ minHeight: "40px" }}
             aria-haspopup="true"
@@ -62,7 +67,7 @@ const LanguageSwitcher = () => {
             aria-label="Select language"
           >
             <img
-              src={flags[currentLang]}
+              src={flags[currentLang] || flags.en}
               alt={currentLang === "en" ? "English" : "Français"}
               className="w-5 h-5 rounded-sm"
             />
